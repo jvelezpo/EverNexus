@@ -10,4 +10,5 @@ class PagesController < ApplicationController
   def questions
     send_file "#{Rails.root}/app/assets/raw/questions.xml", :type => "application/xml", :disposition => 'inline'
   end
+
 end
