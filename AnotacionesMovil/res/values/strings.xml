@@ -1,9 +1,10 @@
 <resources>
 
-    <string name="app_name">Anotaciones</string>
-    <string name="menu_settings">Settings</string>
+    <string name="app_name">Anotaciones</string> 
     <string name="titulo_principal">Anotaciones</string>
     <string name="boton_traer">Traer Notas</string>
     
-
+	<string name="menu_settings">Settings</string>
+	<string name="menu_pull">Obtener Nota</string>
+	<string name="menu_push">Enviar Nota</string>
 </resources>

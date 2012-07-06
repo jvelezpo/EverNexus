@@ -42,7 +42,7 @@ public class Principal extends MainActivity {
      * Metodo para traer las notas del servidor
      * @param v
      */
-    public void traerNotas(View v){
+    public void onPull(View v){
     	progreso++;
     	anotacion = new AnotacionDownloader();
         anotacion.execute(SERVER_ANOTACIONES, progreso);

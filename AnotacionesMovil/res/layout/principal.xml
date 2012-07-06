@@ -9,22 +9,13 @@
         android:layout_height="50dp"
         android:text="@string/titulo_principal"
          />
-
-    <Button
-        android:id="@+id/traer_anotaciones"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titulo_principal"
-        android:text="@string/boton_traer"
-        android:onClick="traerNotas" />
-    
+   
     <TextView
         android:id="@+id/vista_nota"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/traer_anotaciones"
-        android:padding="@dimen/padding_medium" 
-        android:text="hgdfg"/>
+        android:layout_below="@+id/titulo_principal"
+        android:padding="@dimen/padding_medium" />
 
     
 
