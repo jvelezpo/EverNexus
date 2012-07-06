@@ -9,8 +9,8 @@ import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.TextView;
+import android.view.MenuItem;
+import android.widget.EditText;
 
 public class Principal extends MainActivity {
 	
@@ -39,10 +39,36 @@ public class Principal extends MainActivity {
     }
     
     /**
+     * Metodo para saber cual boton fue presionado en el menu
+     */
+    public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+
+    	
+    	int id = item.getItemId();
+    	
+    	switch (id) {
+		case R.id.menu_pull:
+			onPull();
+			break;
+		case R.id.menu_push:
+			EditText anotacion = (EditText) findViewById(R.id.vista_nota);
+	    	anotacion.setText("on push");
+			break;
+		default:
+			anotacion = (EditText) findViewById(R.id.vista_nota);
+	    	anotacion.setText(R.string.error);
+			break;
+		} 
+    	
+		return true;
+	}
+    
+    /**
      * Metodo para traer las notas del servidor
      * @param v
      */
-    public void onPull(View v){
+    public void onPull(){
     	progreso++;
     	anotacion = new AnotacionDownloader();
         anotacion.execute(SERVER_ANOTACIONES, progreso);
@@ -73,11 +99,11 @@ public class Principal extends MainActivity {
 		protected void onPostExecute(Boolean result) {
 			if (!isCancelled()) {
 				if (result) {
-					TextView anotacion = (TextView) findViewById(R.id.vista_nota);
+					EditText anotacion = (EditText) findViewById(R.id.vista_nota);
 			    	anotacion.setText(nota);
 				} else {
-					TextView anotacion = (TextView) findViewById(R.id.vista_nota);
-			    	anotacion.setText("fdihduigfsgf");
+					EditText anotacion = (EditText) findViewById(R.id.vista_nota);
+			    	anotacion.setText(R.string.error);
 				}
 				pleaseWaitDialog.dismiss();
 			} else {
@@ -91,31 +117,30 @@ public class Principal extends MainActivity {
 				// must put parameters in correct order and correct type,
 				// otherwise a ClassCastException will be thrown
 				startingNumber = (Integer) params[1];
-				String pathToNote = params[0] + "";
+				String pathToNote = params[0] + "?user=jvelezpo";
 
-				result = loadQuestionBatch(startingNumber, pathToNote);
-				if (result){
-					nota = nota + "\n" + startingNumber;
-				}
-
+				result = loadNote(startingNumber, pathToNote);
+				if (result)
+					nota += "\n" + startingNumber;
+				
 			} catch (Exception e) {
 				result = false;
 			}
 			return result;
 		}
 		
-		private boolean loadQuestionBatch(int startQuestionNumber, String xmlSource) {
+		private boolean loadNote(int startQuestionNumber, String xmlSource) {
 			boolean result = false;
 			try {
 			    // Create a URL for the desired page
-			    URL url = new URL(SERVER_ANOTACIONES);
+			    URL url = new URL(xmlSource);
 
 			    // Read all the text returned by the server
 			    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 			    String str;
 			    while ((str = in.readLine()) != null) {
 			        // str is one line of text; readLine() strips the newline character(s)
-			    	nota = nota + "\n" + str;
+			    	nota += str + "\n";
 			    }
 			    in.close();
 			    result = true;

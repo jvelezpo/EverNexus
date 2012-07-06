@@ -21,7 +21,8 @@ public final class R {
     }
     public static final class id {
         public static final int menu_pull=0x7f080002;
-        public static final int menu_settings=0x7f080003;
+        public static final int menu_push=0x7f080003;
+        public static final int menu_settings=0x7f080004;
         public static final int titulo_principal=0x7f080000;
         public static final int vista_nota=0x7f080001;
     }
@@ -34,6 +35,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int boton_traer=0x7f050002;
+        public static final int error=0x7f050006;
         public static final int menu_pull=0x7f050004;
         public static final int menu_push=0x7f050005;
         public static final int menu_settings=0x7f050003;

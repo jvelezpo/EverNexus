@@ -2,8 +2,11 @@
 
     <item
         android:id="@+id/menu_pull"
-        android:title="@string/menu_pull"
-        android:onClick="onPull" />
+        android:title="@string/menu_pull" />
+    
+    <item
+        android:id="@+id/menu_push"
+        android:title="@string/menu_push" />
     
     <item
         android:id="@+id/menu_settings"
