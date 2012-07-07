@@ -25,7 +25,7 @@
       <file leaf-file-name="pages_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/pages_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="47" selection-start="150" selection-end="150" vertical-scroll-proportion="0.23327616">
+            <state line="8" column="47" selection-start="150" selection-end="150" vertical-scroll-proportion="0.15437393">
               <folding />
             </state>
           </provider>
@@ -108,6 +108,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anotacionesWeb" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -118,7 +128,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -456,15 +465,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25417298" sideWeight="0.67105263" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25872535" sideWeight="0.67105263" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -473,6 +481,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -550,9 +559,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/raw/questions.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="20" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.40350878">
-          <folding />
-        </state>
+        <state line="17" column="20" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.40350878" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.markdown">
@@ -560,63 +567,47 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="14" selection-end="14" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
+        <state line="0" column="21" selection-start="14" selection-end="14" vertical-scroll-proportion="-0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="27" selection-start="196" selection-end="196" vertical-scroll-proportion="0.23327616">
-          <folding />
-        </state>
+        <state line="8" column="27" selection-start="196" selection-end="196" vertical-scroll-proportion="0.23327616" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="15" selection-start="178" selection-end="178" vertical-scroll-proportion="0.23327616">
-          <folding />
-        </state>
+        <state line="8" column="15" selection-start="178" selection-end="178" vertical-scroll-proportion="0.23327616" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="27" selection-start="1173" selection-end="1173" vertical-scroll-proportion="0.79588336">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/nota.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="79" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="113" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="29" column="27" selection-start="1173" selection-end="1173" vertical-scroll-proportion="0.79588336" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20120706032639_create_users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.17495711">
-          <folding />
-        </state>
+        <state line="6" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.17495711" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20120706041118_create_nota.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="90" selection-end="90" vertical-scroll-proportion="0.11663808">
-          <folding />
-        </state>
+        <state line="4" column="6" selection-start="90" selection-end="90" vertical-scroll-proportion="0.11663808" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="113" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/nota.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="79" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/pages_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="47" selection-start="150" selection-end="150" vertical-scroll-proportion="0.23327616">
+        <state line="8" column="47" selection-start="150" selection-end="150" vertical-scroll-proportion="0.15437393">
           <folding />
         </state>
       </provider>

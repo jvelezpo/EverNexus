@@ -8,6 +8,8 @@
 	<string name="menu_pull">Obtener Nota</string>
 	<string name="menu_push">Enviar Nota</string>
 	
+	<string name="acerca_titulo">Acerca de</string>
+	
 	<string name="error">Error!</string>
 	
 </resources>
