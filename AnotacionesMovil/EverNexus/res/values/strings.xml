@@ -1,0 +1,27 @@
+<resources>
+
+    <string name="app_name">EverNexus</string>
+    <string name="note_view_name">EverNexus | Your Note</string>
+    <string name="note_edit_name">EverNexus | Edit</string>
+    <string name="about_name">EverNexus | About</string>
+    
+    <string name="login">Login</string>
+    <string name="username">User Name</string>
+    <string name="password">Password</string>
+    
+    <string name="menu_about">About</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_submit">Submit</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_edit_note">Search</string>
+    <string name="about_text"> Ever Nexus Version Alpha\n
+        The best app ever!!!!!!!!,\n
+        or tell me what do you think about it?\n\n\n\n
+        Contact me: sebasvelez@gmail.com</string>
+    
+    
+    <string name="error">Error!</string>
+    
+    <string name="description">Description</string>
+
+</resources>

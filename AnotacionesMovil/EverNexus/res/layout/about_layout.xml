@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:layout_margin="10dp">
+    
+ 	<TextView 
+        android:id="@+id/about_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_about"
+        android:textSize="24dp" />
+    
+    <TextView 
+        android:id="@+id/about_helpText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="all"
+        android:bufferType="spannable"
+        android:isScrollContainer="true"
+        android:linksClickable="true"
+        android:scrollbars="vertical"
+        android:text="@string/about_text" 
+        android:layout_marginTop="20dp"
+        style="@style/about_text" />
+</LinearLayout>
