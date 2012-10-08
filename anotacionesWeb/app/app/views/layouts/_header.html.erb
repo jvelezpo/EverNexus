@@ -1,0 +1,24 @@
+<div class="logo">
+  <table>
+    <tr>
+      <td>
+        <%= image_tag("logo.png") %>
+      </td>
+      <td>
+        <h1 title="EverNexus">EverNexus</h1>
+        <h3>Notes with you</h3>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+<nav class="bar">
+  <ul>
+    <li><%= link_to 'Home', root_path %> </li> |
+    <li><%= link_to 'Fork me on GitHub', "https://github.com/jvelezpo/EverNexus", target: "_blank" %> </li>
+    <% if signed_in? %>
+        <li><%= link_to 'Salir', signout_path %></li>
+    <% end %>
+  </ul>
+</nav>

@@ -4,17 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp" >
-
-   <TextView
-        android:id="@+id/note_view_title"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:textSize="22dp" />
     
     <TextView
         android:id="@+id/note_view_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        style="@style/normal_text" />
 
 </LinearLayout>

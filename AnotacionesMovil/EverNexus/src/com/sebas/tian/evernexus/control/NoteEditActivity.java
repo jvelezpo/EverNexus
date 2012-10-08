@@ -1,4 +1,4 @@
-package com.sebas.tian.evernexus;
+package com.sebas.tian.evernexus.control;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,45 +18,50 @@ import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.EditText;
+
+import com.sebas.tian.evernexus.R;
 
 /**
  * 
  * @author Sebastian
  * 
  */
-public class NoteViewActivity extends MainActivity {
-
-	private NoteBackground noteBackground;
+public class NoteEditActivity extends MainActivity {
+	private SendNoteBackground sendNoteBackground;
 	private ProgressDialog pleaseWaitDialog;
-	private TextView title;
-	private TextView body;
+	private EditText title;
+	private EditText body;
 
 	/**
 	 * Called when the activity is first created.
 	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.note_view_layout);
+		setContentView(R.layout.note_edit_layout);
 
-		title = (TextView) findViewById(R.id.note_view_title);
-		body = (TextView) findViewById(R.id.note_view_text);
-
-		noteBackground = new NoteBackground();
-		noteBackground.execute(URL + "pages/note.json");
+		title = (EditText) findViewById(R.id.note_edit_title);
+		body = (EditText) findViewById(R.id.note_edit_text);
+		
+		Bundle extras = getIntent().getExtras();
+		title.setText(extras.getString("title"));
+		body.setText(extras.getString("body"));
+		setTitle("Editing " + extras.getString("title") + " s Note");
 	}
 
 	/**
 	 * Show menu in this View
 	 */
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.note_menu, menu);
+		getMenuInflater().inflate(R.menu.simple_menu, menu);
 		return true;
 	}
 
@@ -65,20 +70,24 @@ public class NoteViewActivity extends MainActivity {
 	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.note_menu_about:
-			startActivity(new Intent(NoteViewActivity.this, AboutActivity.class));
+		case R.id.simple_menu_about:
+			startActivity(new Intent(NoteEditActivity.this, AboutActivity.class));
 			break;
-		case R.id.note_menu_edit:
-			Intent i = new Intent(NoteViewActivity.this, NoteEditActivity.class);
-			i.putExtra("title", title.getText().toString());
-			i.putExtra("body", body.getText().toString());
-			startActivity(i);
-			NoteViewActivity.this.finish();
+		case R.id.simple_menu_share:
+			share();
 			break;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 		return true;
+	}
+	
+	/**
+	 * After the note has been edited it is send to the server 
+	 */
+	public void sendNote(View v){
+		sendNoteBackground = new SendNoteBackground();
+		sendNoteBackground.execute(URL + "pages/update_note.json");
 	}
 
 	/**
@@ -86,8 +95,19 @@ public class NoteViewActivity extends MainActivity {
 	 */
 	private void resetValues() {
 		pleaseWaitDialog.dismiss();
-		toaster("Error getting data from the server");
+		toaster("Error sending data to the server");
 	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			toaster("The note was not saved!");
+			startActivity(new Intent(NoteEditActivity.this, NoteViewActivity.class));
+			NoteEditActivity.this.finish();
+	    }
+		return super.onKeyDown(keyCode, event);
+	}
+	
 	
 	/**
 	 * Goes to the server and try to do login
@@ -95,17 +115,15 @@ public class NoteViewActivity extends MainActivity {
 	 * @author Sebastian
 	 * 
 	 */
-	private class NoteBackground extends AsyncTask<Object, String, Boolean> {
+	private class SendNoteBackground extends AsyncTask<Object, String, Boolean> {
 		private String respond = "";
 
 		protected void onPreExecute() {
-			pleaseWaitDialog = ProgressDialog
-					.show(NoteViewActivity.this, "Downloading Your Last Note",
-							"Be patient, Come on!", true, true);
+			pleaseWaitDialog = ProgressDialog.show(NoteEditActivity.this, "Sending New Note", "Be patient, Come on!", true, true);
 
 			pleaseWaitDialog.setOnCancelListener(new OnCancelListener() {
 				public void onCancel(DialogInterface dialog) {
-					NoteBackground.this.cancel(true);
+					SendNoteBackground.this.cancel(true);
 				}
 			});
 		}
@@ -121,8 +139,8 @@ public class NoteViewActivity extends MainActivity {
 					if (result) {
 						JSONObject jsonObject = new JSONObject(respond);
 						if (jsonObject.getBoolean("log")) {
-							title.setText(jsonObject.getString("title"));
-							body.setText(jsonObject.getString("body"));
+							startActivity(new Intent(NoteEditActivity.this, NoteViewActivity.class));
+							NoteEditActivity.this.finish();
 						} else {
 							throw new Exception();
 						} 
@@ -150,9 +168,10 @@ public class NoteViewActivity extends MainActivity {
 			HttpPost httppost = new HttpPost(path);
 			try {
 				// Add your data
-				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
-						1);
+				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
 				nameValuePairs.add(new BasicNameValuePair("token", token));
+				nameValuePairs.add(new BasicNameValuePair("title", title.getText().toString()));
+				nameValuePairs.add(new BasicNameValuePair("body", body.getText().toString()));
 				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 				// Execute HTTP Post Request
@@ -179,4 +198,6 @@ public class NoteViewActivity extends MainActivity {
 		}
 
 	}
+	
+	
 }

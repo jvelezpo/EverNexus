@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  protect_from_forgery
+
+  helper_method :signed_in?
+
   def index
     @title = "Home"
   end
@@ -53,5 +57,10 @@ class PagesController < ApplicationController
 
   def error
     @title = "Error"
+  end
+
+
+  def signed_in?
+    false
   end
 end

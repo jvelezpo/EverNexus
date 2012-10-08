@@ -1,4 +1,4 @@
-package com.sebas.tian.evernexus;
+package com.sebas.tian.evernexus.control;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +16,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import com.sebas.tian.evernexus.R;
+import com.sebas.tian.evernexus.dao.UserDao;
+import com.sebas.tian.evernexus.entity.User;
+
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -25,7 +29,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+
 
 /**
  * 
@@ -36,8 +42,9 @@ public class LoginActivity extends MainActivity {
 
 	private LoginBackground loginBackground;
 	private ProgressDialog pleaseWaitDialog;
-	private EditText username;
-	private EditText password;
+	private EditText username_et;
+	private EditText password_ed;
+	private CheckBox userId_chk;
 
 	/**
 	 * Called when the activity is first created.
@@ -46,8 +53,16 @@ public class LoginActivity extends MainActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_layout);
 
-		username = (EditText) findViewById(R.id.login_username);
-		password = (EditText) findViewById(R.id.login_password);
+		username_et = (EditText) findViewById(R.id.login_username);
+		password_ed = (EditText) findViewById(R.id.login_password);
+		userId_chk = (CheckBox) findViewById(R.id.login_user_id_chk);
+		
+		UserDao userDao = new UserDao(this);
+		User user = userDao.getUser();
+		if(user.getUsername() != null){
+			username_et.setText(user.getUsername());
+			userId_chk.setChecked(true);
+		}
 	}
 
 	/**
@@ -66,11 +81,16 @@ public class LoginActivity extends MainActivity {
 		case R.id.simple_menu_about:
 			startActivity(new Intent(LoginActivity.this, AboutActivity.class));
 			break;
+		case R.id.simple_menu_share:
+			share();
+			break;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 		return true;
 	}
+	
+	
 
 	/**
 	 * After clicking on login buttom
@@ -78,18 +98,34 @@ public class LoginActivity extends MainActivity {
 	 */
 	public void login(View v) {
 		loginBackground = new LoginBackground();
-		loginBackground.execute(URL + "pages/login.json", username.getText()
-				.toString(), password.getText().toString());
+		loginBackground.execute(URL + "pages/login.json", username_et.getText()
+				.toString(), password_ed.getText().toString());
 	}
 
 	/**
 	 * Resets all the values to the defaults
 	 */
 	private void resetValues() {
-		password.setText("");
-		username.requestFocus();
+		password_ed.setText("");
+		username_et.requestFocus();
 		pleaseWaitDialog.dismiss();
 		toaster("Wrong user name or password");
+	}
+	
+	/**
+	 * Saves the username in the db if the chackbox is checked
+	 */
+	private void saveUsername(){
+		UserDao userDao = new UserDao(this);
+		if (userId_chk.isChecked()){
+			User user = new User();
+			user.setUsername(username_et.getText().toString());
+			user.setEmail("");
+			user.setPassword(password_ed.getText().toString());
+			userDao.addUser(user);
+		}else{
+			userDao.deleteAllUser();
+		}
 	}
 
 	/**
@@ -107,7 +143,6 @@ public class LoginActivity extends MainActivity {
 
 			pleaseWaitDialog.setOnCancelListener(new OnCancelListener() {
 				public void onCancel(DialogInterface dialog) {
-					// TODO Auto-generated method stub
 					LoginBackground.this.cancel(true);
 				}
 			});
@@ -123,6 +158,7 @@ public class LoginActivity extends MainActivity {
 					if (result) {
 							JSONObject jsonObject = new JSONObject(respond);
 							if (jsonObject.getBoolean("log")) {
+								saveUsername();
 								token = jsonObject.getString("token");
 								startActivity(new Intent(LoginActivity.this, NoteViewActivity.class));
 								LoginActivity.this.finish();
