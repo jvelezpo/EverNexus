@@ -1,0 +1,9 @@
+<h1>Wellcome <%= @user.name.capitalize %></h1>
+<br/><br/><br/>
+<% if @user.text.nil? %>
+    <h3>You dont have any note yet</h3>
+<% else %>
+    <h3><%= @user.text.title %></h3>
+
+    <p><%= @user.text.body %></p>
+<% end %>

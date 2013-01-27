@@ -1,4 +1,6 @@
 App::Application.routes.draw do
+  get "users/index"
+
   get "pages/index"
   get "pages/login"
   get "pages/error"
@@ -12,4 +14,10 @@ App::Application.routes.draw do
   post "pages/update_note"
 
   root :to => 'pages#index'
+
+
+  match '/signin', :to => 'users#signin'
+  match '/signout', :to => 'users#destroy'
+
+  match '/user', :to => 'users#index'
 end

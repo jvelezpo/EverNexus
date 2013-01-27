@@ -1,18 +1,19 @@
 class PagesController < ApplicationController
   protect_from_forgery
+  include ApplicationHelper
 
-  helper_method :signed_in?
+  before_filter :user_account, :only => [:index]
 
   def index
     @title = "Home"
   end
 
   def login
-    user = User.find_all_by_name(params["user"]) && User.find_all_by_pass(params["pass"])
-    if user.count == 1
-      respond = {log: true, token: user.first.id}
-    else
+    user = User.authenticate(params["user"],params["pass"])
+    if user.nil?
       respond = {log: false}
+    else
+      respond = {log: true, token: user.id}
     end
     respond_to do |format|
       format.json { render :json => respond }
@@ -59,8 +60,9 @@ class PagesController < ApplicationController
     @title = "Error"
   end
 
+  private
 
-  def signed_in?
-    false
+  def user_account
+    redirect_to user_path if signed_in?
   end
 end

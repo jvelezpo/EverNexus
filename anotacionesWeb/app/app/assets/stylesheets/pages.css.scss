@@ -1,3 +1,46 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#login {
+  position: fixed;
+  top: 0;
+  width: inherit;
+  display: none;
+  float: right;
+  margin-left: 69%;
+  margin-top: 91px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #FAFAFA;
+  background: -moz-linear-gradient(#FAFAFA,#EAEAEA);
+  background: -webkit-linear-gradient(#FAFAFA,#EAEAEA);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')";
+  border: 1px solid #CACACA;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1);
+}
+
+#login h1 { margin-top: 15px; }
+#login div.join { margin-bottom: 15px; }
+
+#login ul { padding: 0; }
+
+#login li {
+  list-style: none;
+  margin-bottom: 1em;
+}
+
+/* Close button on form */
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-weight: bold;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+input.submit{
+  padding-left: 20px;
+  padding-right: 20px;
+}

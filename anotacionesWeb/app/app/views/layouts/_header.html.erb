@@ -15,10 +15,96 @@
 
 <nav class="bar">
   <ul>
-    <li><%= link_to 'Home', root_path %> </li> |
-    <li><%= link_to 'Fork me on GitHub', "https://github.com/jvelezpo/EverNexus", target: "_blank" %> </li>
+    <li><%= link_to 'Home', root_path %> </li>
+    <% if !signed_in? %>
+        | <li><%= link_to 'Fork me on GitHub', "https://github.com/jvelezpo/EverNexus", target: "_blank" %> </li>
+        | <li><%= link_to 'SignIn', '#', :class => "signIn" %></li>
+    <% end %>
     <% if signed_in? %>
-        <li><%= link_to 'Salir', signout_path %></li>
+        | <li><%= link_to 'SignOut', signout_path %></li>
     <% end %>
   </ul>
 </nav>
+
+
+
+
+
+
+
+<div id="login">
+  <h1>Login</h1>
+  <%= form_tag(signin_path, :method => "post") do %>
+      <table class="ingreso">
+        <tr>
+          <td><%= label_tag(:name, "Username:") %></td>
+          <td><%= text_field_tag :name %></td>
+        </tr>
+        <tr>
+          <td><%= label_tag(:pass, "Password:") %></td>
+          <td><%= password_field_tag(:pass) %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= submit_tag("Login",:class => "submit") %></td>
+        </tr>
+      </table>
+  <% end %>
+  <div class="join">
+    <%= link_to "Join now!", '#' %>
+  </div>
+</div>
+
+
+
+
+
+<script>
+    (function(){
+        var loginForm = {
+
+            login: $('#login'),
+
+            config: {
+                effect: 'slideToggle',
+                speed: 500
+            },
+
+            init: function(config){
+                $.extend(this.config, config);
+
+                $('.signIn').on('click', this.show);
+            },
+
+            show: function(){
+                var lf = loginForm,
+                        container = lf.login,
+                        config = lf.config;
+
+                if( container.is(':hidden')){
+                    loginForm.close.call(container);
+                    container[config.effect](config.speed);
+                }
+            },
+
+            close: function() {
+                var $this = $(this), // #login
+                        config = loginForm.config;
+
+                if ( $this.find('span.close').length ) return;
+
+                $('<span class=close>X</span>')
+                        .prependTo(this)
+                        .on('click', function() {
+                            // this = span
+                            $this[config.effect](config.speed);
+                        })
+            }
+        };
+        loginForm.init({
+            // effect: 'fadeToggle',
+            speed: 300
+        });
+    })();
+
+</script>
