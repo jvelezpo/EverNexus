@@ -6,6 +6,11 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3', :group => [:development, :test]
+
+group :development do
+  gem 'meta_request', '0.2.1'
+end
+
 group :production do
   gem 'thin'
   gem 'pg'

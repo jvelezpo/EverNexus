@@ -1,3 +1,21 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.editPage{
+  padding: 0px 50px 0px 50px;
+}
+
+#editNote{
+  display: none;
+}
+.editTitle{
+  height: 16px;
+}
+.editText{
+  height: 300px;
+}
+.editText, .editTitle{
+  width: 600px;
+  resize: none;
+}

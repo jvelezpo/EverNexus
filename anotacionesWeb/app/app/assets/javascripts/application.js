@@ -13,3 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(function() {
+    $this = $("#flash");
+    if ($this.is(":visible")) {
+        $this.fadeOut(3000, function() {
+            $this.remove();
+        });
+    }
+});

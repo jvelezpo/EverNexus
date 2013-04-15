@@ -14,7 +14,7 @@
 <div id="bodybackground">
 <div id="content">
   <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
+      <div id="flash" class="flash <%= key %>"><%= value %></div>
   <%  end %>
   <%= yield %>
 </div>
@@ -24,3 +24,4 @@
 </div>
 </body>
 </html>
+

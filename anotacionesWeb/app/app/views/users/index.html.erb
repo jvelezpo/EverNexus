@@ -1,9 +1,71 @@
 <h1>Wellcome <%= @user.name.capitalize %></h1>
-<br/><br/><br/>
-<% if @user.text.nil? %>
-    <h3>You dont have any note yet</h3>
-<% else %>
-    <h3><%= @user.text.title %></h3>
+<br/><br/>
 
-    <p><%= @user.text.body %></p>
-<% end %>
+<div class="editPage">
+  <button id="editNoteButton" class="button">Edit Note</button>
+  <br/><br/>
+  <div id="showNote">
+    <% if @user.text.nil? %>
+        <h3>You dont have any note yet</h3>
+    <% else %>
+        <h3 id="noteTitle"><%= @user.text.title %></h3>
+
+        <pre id="noteBody"><%= @user.text.body %></pre>
+    <% end %>
+  </div>
+
+  <div id="editNote">
+    <h1>Login</h1>
+    <%= form_tag(sendeditednote_path, :method => "post") do %>
+        <table>
+          <tr>
+            <td><%= label_tag(:title, "Title:") %></td>
+            <td><%= text_area_tag :title, '', :class => 'editTitle' %></td>
+          </tr>
+          <tr>
+            <td><%= label_tag(:body, "Text:") %></td>
+            <td><%= text_area_tag(:body, '', :class => 'editText') %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= submit_tag("Send",:class => "button") %>
+              <button id="cancelButton" class="button">Cancel</button>
+            </td>
+          </tr>
+        </table>
+    <% end %>
+  </div>
+</div>
+
+<script>
+    (function() {
+
+        $("#editNoteButton").on("click", function() {
+            show = $('#showNote');
+            edit = $('#editNote');
+            editButton = $(this);
+            if(show.is(':visible')){
+                show.fadeOut(300);
+                editButton.fadeOut(300, function(){
+                    $('.editTitle').focus().text($('#noteTitle').text());
+                    $('.editText').text($('#noteBody').text());
+                    edit.fadeIn(300);
+                });
+            }
+        });
+
+        $('#cancelButton').on('click', function(e){
+            e.preventDefault();
+            show = $('#showNote');
+            edit = $('#editNote');
+            editButton = $('#editNoteButton');
+            if(edit.is(':visible')){
+                edit.fadeOut(300, function(){
+                    editButton.fadeIn(300);
+                    show.fadeIn(300);
+                });
+            }
+        });
+    })();
+</script>

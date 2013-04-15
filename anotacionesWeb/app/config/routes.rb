@@ -20,4 +20,6 @@ App::Application.routes.draw do
   match '/signout', :to => 'users#destroy'
 
   match '/user', :to => 'users#index'
+
+  match '/sendeditednote', :to => 'users#updatenote'
 end
